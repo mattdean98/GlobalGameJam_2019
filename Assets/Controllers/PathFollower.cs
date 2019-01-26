@@ -13,6 +13,7 @@ public class PathFollower : MonoBehaviour
 
     int CurrentNode;
     static Vector3 CurrentPositionHolder;
+    private Vector3 _startPosition;
 
 
 
@@ -31,6 +32,7 @@ public class PathFollower : MonoBehaviour
 
     void CheckNode()
     {
+        _startPosition = Guard1.transform.position;
         Timer = 0;
         if (PathNode[CurrentNode] != null)
         {
@@ -47,7 +49,7 @@ public class PathFollower : MonoBehaviour
 
         if(Guard1.transform.position != CurrentPositionHolder)
         {
-            Guard1.transform.position = Vector3.Lerp(Guard1.transform.position, CurrentPositionHolder, Timer);
+            Guard1.transform.position = Vector3.Lerp(_startPosition, CurrentPositionHolder, Timer);
         }
         else
         {
