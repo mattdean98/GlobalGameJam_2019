@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
         //WalkingDistance = 10;
     }
 
+    void FixedUpdate() {
+        
+    }
     // Update is called once per frame
     void Update()
     {
