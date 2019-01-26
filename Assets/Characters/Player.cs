@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public int WalkingDistance;
     public GameObject _Player;
     private Rigidbody rb;
+    public float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +22,14 @@ public class Player : MonoBehaviour
 
         Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
-        rb.AddForce(movement);
+        rb.AddForce(movement * speed);
     }
 
+    
     // Update is called once per frame
     void Update()
     {
+        /* 
         //walk
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -62,5 +65,7 @@ public class Player : MonoBehaviour
         {
             _Player.transform.Translate(2f * WalkingDistance, 0f, 0f);
         }
+    */
+        
     }
 }
