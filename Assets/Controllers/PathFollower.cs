@@ -7,6 +7,8 @@ public class PathFollower : MonoBehaviour
     Node[] PathNode;
 
     public GameObject Guard1;
+    private GameObject Light;
+
     public float MoveSpeed;
 
     float Timer;
@@ -23,6 +25,8 @@ public class PathFollower : MonoBehaviour
     {
         PathNode = GetComponentsInChildren<Node>();
         CheckNode();
+
+        //var temp = GetComponentInChildren();
 
         //foreach(var i in PathNode)
         //{
@@ -49,13 +53,20 @@ public class PathFollower : MonoBehaviour
 
         if(Guard1.transform.position != CurrentPositionHolder)
         {
-            Guard1.transform.LookAt(CurrentPositionHolder - Guard1.transform.position);
+            //TODO this doesnt work AT ALL -- SUPER JEEAAIEIENNNNKY
+            //Guard1.transform.LookAt((PathNode[CurrentNode].transform.position + Guard1.transform.position)/2);
             Guard1.transform.position = Vector3.Lerp(_startPosition, CurrentPositionHolder, Timer);
+            
         }
         else
         {
             CurrentNode++;
             CheckNode();
         }
+    }
+
+    IEnumerator WaitForSeconds(int n)
+    {
+        yield return new WaitForSeconds(n);
     }
 }
