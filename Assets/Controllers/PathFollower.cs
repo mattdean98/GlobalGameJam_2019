@@ -42,6 +42,11 @@ public class PathFollower : MonoBehaviour
         {
             CurrentPositionHolder = PathNode[CurrentNode].transform.position;
         }
+        else
+        {
+            //set to first node
+            CurrentNode = 0;
+        }
     }
 
 
