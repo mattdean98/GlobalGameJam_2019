@@ -6,11 +6,22 @@ public class Player : MonoBehaviour
 {
     public int WalkingDistance;
     public GameObject _Player;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         //WalkingDistance = 10;
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate() {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+
+        rb.AddForce(movement);
     }
 
     // Update is called once per frame
