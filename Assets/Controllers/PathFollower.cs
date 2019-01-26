@@ -49,6 +49,7 @@ public class PathFollower : MonoBehaviour
 
         if(Guard1.transform.position != CurrentPositionHolder)
         {
+            Guard1.transform.LookAt(CurrentPositionHolder - Guard1.transform.position);
             Guard1.transform.position = Vector3.Lerp(_startPosition, CurrentPositionHolder, Timer);
         }
         else
