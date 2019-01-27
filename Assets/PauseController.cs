@@ -8,16 +8,17 @@ public class PauseController : MonoBehaviour
     SceneManager scene = new SceneManager();
     GameObject[] pauseObjects;
 
-    void Start () {
+    void Start() {
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		hidePaused();
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update() {
+        //Debug.Log ("Is this even being updated");
 		//uses the p button to pause and unpause the game
-		if(Input.GetKeyDown(KeyCode.P))
+		if(Input.GetKeyDown(KeyCode.Escape))
 		{
             Debug.Log ("I saw the light!");
 			if(Time.timeScale == 1)
@@ -34,7 +35,8 @@ public class PauseController : MonoBehaviour
 
 	//Reloads the Level
 	public void Reload(){
-		Application.LoadLevel(Application.loadedLevel);
+		//Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene("Level1");
 	}
 
 	//controls the pausing of the scene
@@ -51,6 +53,7 @@ public class PauseController : MonoBehaviour
 
 	//shows objects with ShowOnPause tag
 	public void showPaused(){
+        Debug.Log ("I made it into the showPaused function");
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(true);
 		}
@@ -58,14 +61,17 @@ public class PauseController : MonoBehaviour
 
 	//hides objects with ShowOnPause tag
 	public void hidePaused(){
+        Debug.Log ("I made it into the hidePaused function");
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(false);
+            
 		}
 	}
 
 	//loads inputted level
-	public void LoadLevel(string level){
-		Application.LoadLevel(level);
+	public void LoadMainMenu(){
+        //string level
+		SceneManager.LoadScene("MainMenuScreen");
 	}
 
     public void ExitGame(){
