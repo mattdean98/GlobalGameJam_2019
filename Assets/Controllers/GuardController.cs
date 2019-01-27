@@ -15,17 +15,37 @@ public class GuardController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Vision.enabled = true;
-        if (Player.GetComponent<Renderer>().IsVisibleFrom(Vision))
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+        Player.layer = 2;
+        Pinger.layer = 2;
+
+        //if (Physics.Raycast(transform.position, fwd, 2, ))
+        //{
+        //    Debug.Log("There is something in front of the object!");
+        //}
+
+        if (!Physics.Linecast(Pinger.transform.position, Player.transform.position))
         {
-            if (IsNotBlocked(Pinger, Player))
-            {
-                Debug.Log("Visible");
-            }
+            Debug.Log("Visible");
         }
-        Vision.enabled = false;
+
+        Player.layer = 8;
+        Pinger.layer = 8;
+
+
+
+        //Vision.enabled = true;
+        //if (Player.GetComponent<Renderer>().IsVisibleFrom(Vision))
+        //{
+        //    if (IsNotBlocked(Pinger, Player))
+        //    {
+        //        Debug.Log("Visible");
+        //    }
+        //}
+        //Vision.enabled = false;
     }
 
     public bool IsNotBlocked(GameObject gm1, GameObject gm2)
