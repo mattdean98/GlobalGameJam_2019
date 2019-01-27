@@ -11,6 +11,13 @@ public class GuardController : MonoBehaviour
 
     public GameObject IsCaught;
 
+    private int _seenCount;
+
+    private void Start()
+    {
+        _seenCount = 0;
+    }
+
     void FixedUpdate()
     {
         Player.layer = 2;
@@ -24,11 +31,21 @@ public class GuardController : MonoBehaviour
             float angle = Vector3.Angle(guardForward, between);
             if (angle < 40f)
             {
-                Debug.Log("Visible!");
-                IsCaught.SetActive(true);
+                //Debug.Log("Visible at count = " + _seenCount);
+                if (_seenCount > 5)
+                {
+                    print("Caught!");
+                    IsCaught.SetActive(true);
+                    Light.GetComponent<Wiggle>().enabled = false;
+                    _seenCount = 0;
+                }
 
-                Light.GetComponent<Wiggle>().enabled = false;
+                _seenCount++;
             }
+        }
+        else
+        {
+            _seenCount = 0;
         }
 
         Player.layer = 8;
