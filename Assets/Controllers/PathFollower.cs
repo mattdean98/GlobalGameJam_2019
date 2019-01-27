@@ -17,6 +17,7 @@ public class PathFollower : MonoBehaviour
     static Vector3 CurrentPositionHolder;
     private Vector3 _startPosition;
 
+    public GameObject IsCaught;
 
 
 
@@ -51,6 +52,11 @@ public class PathFollower : MonoBehaviour
     {
         try
         {
+
+            if (IsCaught.activeSelf)
+            {
+                return;
+            }
             //Debug.Log(CurrentNode);
             Timer += Time.deltaTime * MoveSpeed;
 
