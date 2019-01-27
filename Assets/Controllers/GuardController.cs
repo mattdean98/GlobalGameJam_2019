@@ -19,7 +19,7 @@ public class GuardController : MonoBehaviour
             float angle = Vector3.Angle(guardForward, between);
             if (angle < 40f)
             {
-                Debug.Log(angle);
+                Debug.Log("Visible!");
             }
         }
 
