@@ -20,13 +20,13 @@ public class PauseController : MonoBehaviour
 		//uses the p button to pause and unpause the game
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
-            Debug.Log ("I saw the light!");
+            //Debug.Log ("I saw the light!");
 			if(Time.timeScale == 1)
 			{
 				Time.timeScale = 0;
 				showPaused();
 			} else if (Time.timeScale == 0){
-				Debug.Log ("high");
+				//Debug.Log ("high");
 				Time.timeScale = 1;
 				hidePaused();
 			}
@@ -56,6 +56,7 @@ public class PauseController : MonoBehaviour
         Debug.Log ("I made it into the showPaused function");
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(true);
+            Debug.Log ("I'm toggling you guise");
 		}
 	}
 
