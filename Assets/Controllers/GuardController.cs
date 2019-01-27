@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class GuardController : MonoBehaviour
 {
@@ -8,15 +9,22 @@ public class GuardController : MonoBehaviour
     public Camera Vision;
     public AudioSource Whistle;
 
+    public GameObject CaughtText;
+
     public GameObject Light;
 
     public GameObject IsCaught;
 
     private int _seenCount;
 
+    private PauseController pauseController;
+
     private void Start()
     {
+        CaughtText.SetActive(false);
         _seenCount = 0;
+        ;
+        pauseController = new PauseController();
     }
 
     void FixedUpdate()
@@ -35,8 +43,7 @@ public class GuardController : MonoBehaviour
                 //Debug.Log("Visible at count = " + _seenCount);
                 if (_seenCount > 5)
                 {
-
-                    print("Caught!");
+                    CaughtText.SetActive(true);
 
                     if (IsCaught.activeSelf == false)
                     {
@@ -45,6 +52,8 @@ public class GuardController : MonoBehaviour
                     IsCaught.SetActive(true);
                     Light.GetComponent<Wiggle>().enabled = false;
                     _seenCount = 0;
+
+                    StartCoroutine(Reload());
                 }
 
                 _seenCount++;
@@ -57,5 +66,11 @@ public class GuardController : MonoBehaviour
 
         Player.layer = 8;
         Pinger.layer = 8;
+    }
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(1.5f);
+        pauseController.Reload();
     }
 }
