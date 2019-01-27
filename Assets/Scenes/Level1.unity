@@ -279,7 +279,7 @@ SpriteRenderer:
   m_Size: {x: 9, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &91805404
@@ -1048,6 +1048,7 @@ GameObject:
   - component: {fileID: 324370395}
   - component: {fileID: 324370394}
   - component: {fileID: 324370393}
+  - component: {fileID: 324370396}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: ShowOnPause
@@ -1114,7 +1115,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 324370394}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 324370396}
+        m_MethodName: Reload
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &324370394
@@ -1154,6 +1166,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324370391}
   m_CullTransparentMesh: 0
+--- !u!114 &324370396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324370391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68bb074b339ee340930aeb560c2e991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &333808048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2534,6 +2558,7 @@ GameObject:
   - component: {fileID: 794883630}
   - component: {fileID: 794883629}
   - component: {fileID: 794883628}
+  - component: {fileID: 794883631}
   m_Layer: 5
   m_Name: ExitMenuButton
   m_TagString: ShowOnPause
@@ -2601,15 +2626,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 794883626}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 794883631}
+        m_MethodName: LoadLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainMenuScreen
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2651,6 +2676,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794883626}
   m_CullTransparentMesh: 0
+--- !u!114 &794883631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794883626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68bb074b339ee340930aeb560c2e991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &842133004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2845,6 +2882,7 @@ GameObject:
   - component: {fileID: 876211577}
   - component: {fileID: 876211576}
   - component: {fileID: 876211575}
+  - component: {fileID: 876211578}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: ShowOnPause
@@ -2911,7 +2949,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 876211576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 876211573}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &876211576
@@ -2951,6 +3000,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876211573}
   m_CullTransparentMesh: 0
+--- !u!114 &876211578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876211573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68bb074b339ee340930aeb560c2e991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &900110855
 GameObject:
   m_ObjectHideFlags: 0
@@ -3317,6 +3378,7 @@ GameObject:
   - component: {fileID: 966171909}
   - component: {fileID: 966171911}
   - component: {fileID: 966171910}
+  - component: {fileID: 966171912}
   m_Layer: 5
   m_Name: GamePauseText
   m_TagString: ShowOnPause
@@ -3385,6 +3447,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966171908}
   m_CullTransparentMesh: 0
+--- !u!114 &966171912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966171908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68bb074b339ee340930aeb560c2e991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &987325525
 GameObject:
   m_ObjectHideFlags: 0
@@ -5065,7 +5139,7 @@ SpriteRenderer:
   m_Size: {x: 9, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1605899046
@@ -5162,6 +5236,7 @@ GameObject:
   - component: {fileID: 1618666061}
   - component: {fileID: 1618666060}
   - component: {fileID: 1618666059}
+  - component: {fileID: 1618666062}
   m_Layer: 5
   m_Name: ExitDesktopButton
   m_TagString: ShowOnPause
@@ -5228,7 +5303,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1618666060}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1618666062}
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1618666060
@@ -5268,6 +5354,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618666057}
   m_CullTransparentMesh: 0
+--- !u!114 &1618666062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618666057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68bb074b339ee340930aeb560c2e991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1667125747
 GameObject:
   m_ObjectHideFlags: 0
@@ -5736,7 +5834,7 @@ SpriteRenderer:
   m_Size: {x: 9, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1812930480
