@@ -17,6 +17,7 @@ public class GuardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vision.enabled = true;
         if (Player.GetComponent<Renderer>().IsVisibleFrom(Vision))
         {
             if (IsNotBlocked(Pinger, Player))
@@ -24,6 +25,7 @@ public class GuardController : MonoBehaviour
                 Debug.Log("Visible");
             }
         }
+        Vision.enabled = false;
     }
 
     public bool IsNotBlocked(GameObject gm1, GameObject gm2)
@@ -32,6 +34,9 @@ public class GuardController : MonoBehaviour
         //{
         //    return false;
         //}
+
+        gm1.layer = 2;
+        gm2.layer = 2;
 
         float maxRange = 5;
         RaycastHit hit;
@@ -44,6 +49,9 @@ public class GuardController : MonoBehaviour
                 Debug.Log("visible");
             }
         }
+
+        gm1.layer = 0;
+        gm2.layer = 0;
 
         return true;
     }
