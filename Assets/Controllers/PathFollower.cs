@@ -36,16 +36,23 @@ public class PathFollower : MonoBehaviour
 
     void CheckNode()
     {
-        _startPosition = Guard1.transform.position;
-        Timer = 0;
-        if (PathNode[CurrentNode] != null)
+        try
         {
-            CurrentPositionHolder = PathNode[CurrentNode].transform.position;
+            _startPosition = Guard1.transform.position;
+            Timer = 0;
+            if (PathNode[CurrentNode] != null)
+            {
+                CurrentPositionHolder = PathNode[CurrentNode].transform.position;
+            }
+            else
+            {
+                //set to first node
+                CurrentNode = 0;
+            }
         }
-        else
+        catch
         {
-            //set to first node
-            CurrentNode = 0;
+
         }
     }
 
@@ -53,20 +60,27 @@ public class PathFollower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(CurrentNode);
-        Timer += Time.deltaTime * MoveSpeed;
+        try
+        {
+            //Debug.Log(CurrentNode);
+            Timer += Time.deltaTime * MoveSpeed;
 
-        if(Guard1.transform.position != CurrentPositionHolder)
-        {
-            //TODO this doesnt work AT ALL -- SUPER JEEAAIEIENNNNKY
-            //Guard1.transform.LookAt((PathNode[CurrentNode].transform.position + Guard1.transform.position)/2);
-            Guard1.transform.position = Vector3.Lerp(_startPosition, CurrentPositionHolder, Timer);
-            
+            if (Guard1.transform.position != CurrentPositionHolder)
+            {
+                //TODO this doesnt work AT ALL -- SUPER JEEAAIEIENNNNKY
+                //Guard1.transform.LookAt((PathNode[CurrentNode].transform.position + Guard1.transform.position)/2);
+                Guard1.transform.position = Vector3.Lerp(_startPosition, CurrentPositionHolder, Timer);
+
+            }
+            else
+            {
+                CurrentNode++;
+                CheckNode();
+            }
         }
-        else
+        catch
         {
-            CurrentNode++;
-            CheckNode();
+
         }
     }
 
