@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GuardController : MonoBehaviour
 {
@@ -29,7 +27,16 @@ public class GuardController : MonoBehaviour
 
         if (!Physics.Linecast(Pinger.transform.position, Player.transform.position))
         {
-            Debug.Log("Visible");
+            //check if in range of flashlight
+            var between = Player.transform.position - Pinger.transform.position;
+            var guardForward = Pinger.transform.forward;
+
+            //compare angle
+            float angle = Vector3.Angle(guardForward, between);
+            if (angle < 40f)
+            {
+                Debug.Log(angle);
+            }
         }
 
         Player.layer = 8;
@@ -48,32 +55,32 @@ public class GuardController : MonoBehaviour
         //Vision.enabled = false;
     }
 
-    public bool IsNotBlocked(GameObject gm1, GameObject gm2)
-    {
-        //if (Physics.Linecast(gm1.transform.position, gm2.transform.position))
-        //{
-        //    return false;
-        //}
+    //public bool IsNotBlocked(GameObject gm1, GameObject gm2)
+    //{
+    //    //if (Physics.Linecast(gm1.transform.position, gm2.transform.position))
+    //    //{
+    //    //    return false;
+    //    //}
 
-        gm1.layer = 2;
-        gm2.layer = 2;
+    //    gm1.layer = 2;
+    //    gm2.layer = 2;
 
-        float maxRange = 5;
-        RaycastHit hit;
+    //    float maxRange = 5;
+    //    RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, (gm1.transform.position - gm2.transform.position), out hit, maxRange))
-        {
-            if (hit.transform == gm2)
-            {
-                // In Range and i can see you!
-                Debug.Log("visible");
-            }
-        }
+    //    if (Physics.Raycast(transform.position, (gm1.transform.position - gm2.transform.position), out hit, maxRange))
+    //    {
+    //        if (hit.transform == gm2)
+    //        {
+    //            // In Range and i can see you!
+    //            Debug.Log("visible");
+    //        }
+    //    }
 
-        gm1.layer = 0;
-        gm2.layer = 0;
+    //    gm1.layer = 0;
+    //    gm2.layer = 0;
 
-        return true;
-    }
+    //    return true;
+    //}
     
 }
