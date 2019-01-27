@@ -3,8 +3,13 @@
 public class GuardController : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject Guard;
     public GameObject Pinger;
     public Camera Vision;
+
+    public GameObject Light;
+
+    public GameObject IsCaught;
 
     void FixedUpdate()
     {
@@ -20,6 +25,9 @@ public class GuardController : MonoBehaviour
             if (angle < 40f)
             {
                 Debug.Log("Visible!");
+                IsCaught.SetActive(true);
+
+                Light.GetComponent<Wiggle>().enabled = false;
             }
         }
 
