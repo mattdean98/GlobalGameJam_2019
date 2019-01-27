@@ -54,6 +54,20 @@ public class PathFollower : MonoBehaviour
             //Debug.Log(CurrentNode);
             Timer += Time.deltaTime * MoveSpeed;
 
+            var between = new Vector3();
+            if (CurrentNode == 0)
+            {
+                between = Guard.transform.position - PathNode[1].transform.position;
+            }
+            else if (CurrentNode <= PathNode.Length)
+            {
+                between = Guard.transform.position - PathNode[0].transform.position;
+            }
+            else
+            {
+                between = Guard.transform.position - PathNode[CurrentNode].transform.position;
+            }
+
             if (Guard.transform.position != CurrentPositionHolder)
             {
                 //TODO this doesnt work AT ALL -- SUPER JEEAAIEIENNNNKY
@@ -62,24 +76,8 @@ public class PathFollower : MonoBehaviour
 
             }
             else
-            {
-                var between = new Vector3();
-                if (CurrentNode == 0)
-                {
-                    between = Guard.transform.position - PathNode[1].transform.position;
-                }
-                else if (CurrentNode <= PathNode.Length)
-                {
-                    between = Guard.transform.position - PathNode[0].transform.position;
-                }
-                else
-                {
-                    between = Guard.transform.position - PathNode[CurrentNode].transform.position;
-                }
-                between = Quaternion.Euler(0, 180, 0) * between;
+            {               
 
-                Debug.Log("Between: " + between);
-                Guard.transform.rotation = Quaternion.LookRotation(between);
                 CurrentNode++;
                 CheckNode();
             }
