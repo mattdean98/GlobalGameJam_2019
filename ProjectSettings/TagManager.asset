@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DARig
   - ShowOnPause
+  - Pick Up
   layers:
   - Default
   - TransparentFX

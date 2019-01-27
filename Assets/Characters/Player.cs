@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -8,10 +9,15 @@ public class Player : MonoBehaviour
     public GameObject _Player;
     private Rigidbody rb;
     public float speed;
+    public Text Text;
+
+    private int _points;
 
     // Start is called before the first frame update
     void Start()
     {
+        //set to 0
+        _points = 0;
         //WalkingDistance = 10;
         rb = GetComponent<Rigidbody>();
     }
@@ -26,7 +32,12 @@ public class Player : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+        //increase points
+        ++_points;
+        //Text.
+        if (other.gameObject.CompareTag("Pick Up")){
+            Destroy(other.gameObject);
+        }
     }
     
     // Update is called once per frame
