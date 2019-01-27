@@ -24,11 +24,11 @@ public class Player : MonoBehaviour
 
         rb.AddForce(movement * speed);
     }
-    /*void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         Destroy(other.gameObject);
     }
-    */
+    
     // Update is called once per frame
     void Update()
     {
