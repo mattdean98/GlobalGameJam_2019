@@ -6,6 +6,7 @@ public class GuardController : MonoBehaviour
     public GameObject Guard;
     public GameObject Pinger;
     public Camera Vision;
+    public AudioSource Whistle;
 
     public GameObject Light;
 
@@ -34,7 +35,13 @@ public class GuardController : MonoBehaviour
                 //Debug.Log("Visible at count = " + _seenCount);
                 if (_seenCount > 5)
                 {
+
                     print("Caught!");
+
+                    if (IsCaught.activeSelf == false)
+                    {
+                        Whistle.Play();
+                    }
                     IsCaught.SetActive(true);
                     Light.GetComponent<Wiggle>().enabled = false;
                     _seenCount = 0;
